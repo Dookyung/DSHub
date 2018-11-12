@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Tidyverse</title>
+
+<script src="site_libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs/highlight.js"></script>
+<link href="site_libs/font-awesome/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Science Hub with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="course.html">Lessons</a>
+</li>
+<li>
+  <a href="Practice.html">Coding Exercise</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://dookyung.github.io/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Tidyverse</h1>
+
+</div>
+
+
+<div id="introduction-to-tidy-data-and-tidyverse" class="section level1">
+<h1>Introduction to Tidy Data and <code>Tidyverse</code></h1>
+<p>R packages for data science</p>
+<p>The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</p>
+<p><img src="diagrams/Tidyverse_packages.png" width="100%" /></p>
+<p>Installing tidyverse installs everything</p>
+<pre><code>install.packages(&quot;tidyverse&quot;)
+
+# Instead of
+install.packages(c(
+ &quot;broom&quot;, &quot;dplyr&quot;, &quot;feather&quot;,
+ &quot;forcats&quot;,&quot;ggplot2&quot;, &quot;haven&quot;,
+ &quot;httr&quot;, &quot;hms&quot;, &quot;jsonlite&quot;,
+ &quot;lubridate&quot;, &quot;magrittr&quot;,
+ &quot;modelr&quot;, &quot;purrr&quot;, &quot;readr&quot;,
+ &quot;readxl&quot;, &quot;stringr&quot;, &quot;tibble&quot;,
+ &quot;rvest&quot;, &quot;tidyr&quot;, &quot;xml2&quot;
+))</code></pre>
+<p>Loading it loads the core tidyverse</p>
+<pre><code>library(tidyverse)
+# Instead of:
+library(ggplot2)
+library(tibble)
+library(tidyr)
+library(readr)
+library(purrr)
+library(dplyr)
+# These are the packages you use in almost
+# every analysis</code></pre>
+<p>Learn the tidyverse</p>
+<p>R for data science The best place to start learning the tidyverse is R for Data Science (R4DS for short), an O’Reilly book written by Hadley Wickham and Garrett Grolemund. It’s designed to take you from knowing nothing about R or the tidyverse to having all the basic tools of data science at your fingertips. You can read it online for free, or buy a physical copy.</p>
+<p>We highly recommend pairing R4DS with the RStudio cheatsheets. These cheatsheets have been carefully designed to pack a lot of information into a small amount of space. You can keep them handy at your desk and quickly jog your memory when you get stuck. Most of the cheatsheets have been translated into multiple languages.</p>
+<p>Goal: Solve complex problems by combining simple, uniform pieces.</p>
+<p>Consistent functions</p>
+<p>The tidyverse separates commands and queries</p>
+<p>A command function performs an action A query function computes a value</p>
+<pre><code># Command
+print()
+plot()
+write_csv()
+&lt;-
+# Query
+summarise()
+mutate()
++ geom_line()
+</code></pre>
+<p>Query functions are like legos (As long as you pick a consistent data structure)</p>
+<p>Command functions are like playmobil</p>
+<p><strong>The pipe</strong></p>
+<p>We already have ways to combine functions</p>
+<pre><code>by_dest &lt;- group_by(flights, dest)
+dest_delay &lt;- summarise(by_dest,
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+)
+big_dest &lt;- filter(dest_delay, n &gt; 100)
+arrange(big_dest, desc(delay))</code></pre>
+<p>But naming is hard work</p>
+<pre><code>foo &lt;- group_by(flights, dest)
+foo &lt;- summarise(foo,
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+)
+foo &lt;- filter(foo, n &gt; 100)
+arrange(foo, desc(delay))</code></pre>
+<pre><code>foo1 &lt;- group_by(flights, dest)
+foo2 &lt;- summarise(foo1,
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+)
+foo3 &lt;- filter(foo2, n &gt; 100)
+arrange(foo3, desc(delay))</code></pre>
+<p>You could nest function calls</p>
+<pre><code>arrange(
+ filter(
+ summarise(
+ group_by(flights, dest),
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+ ),
+ n &gt; 100
+ ),
+ desc(delay)
+)</code></pre>
+<p>magrittr:: %&gt;%</p>
+<p>This is easy to read &amp; doesn’t require naming</p>
+<pre><code>flights %&gt;%
+ group_by(dest) %&gt;%
+ summarise(
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+ ) %&gt;%
+ filter(n &gt; 100) %&gt;%
+ arrange(desc(delay))</code></pre>
+<p>ggplot2 was written before the pipe</p>
+<pre><code>flights %&gt;%
+ group_by(date) %&gt;%
+ summarise(n = n()) %&gt;%
+ ggplot(aes(date, n)) +
+ geom_line() </code></pre>
+<p>And is inconsistent</p>
+<pre><code>ggsave(
+ flights %&gt;%
+ group_by(date) %&gt;%
+ summarise(n = n()) %&gt;%
+ ggplot(aes(date, n)) +
+ geom_line(),
+ &quot;my-plot.pdf&quot;
+)</code></pre>
+<p>The command-query distinction is useful for pipes</p>
+<p>The body is made up of queries Every pipe is ended by a command</p>
+<p>Where is the command function?</p>
+<pre><code>flights %&gt;%
+ group_by(dest) %&gt;%
+ summarise(
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+ ) %&gt;%
+ filter(n &gt; 100) %&gt;%
+ arrange(desc(delay))</code></pre>
+<p>In the absence of a command, R prints</p>
+<pre><code>flights %&gt;%
+ group_by(dest) %&gt;%
+ summarise(
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+ ) %&gt;%
+ filter(n &gt; 100) %&gt;%
+ arrange(desc(delay)) %&gt;%
+ print()</code></pre>
+<p>Another common command is assign</p>
+<pre><code>flights %&gt;%
+ group_by(dest) %&gt;%
+ summarise(
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+ ) %&gt;%
+ filter(n &gt; 100) %&gt;%
+ arrange(desc(delay)) -&gt;
+ dest_delays</code></pre>
+<p>But leading with assignment improves readability</p>
+<pre><code>dest_delays &lt;- flights %&gt;%
+ group_by(dest) %&gt;%
+ summarise(
+ delay = mean(dep_delay, na.rm = TRUE),
+ n = n()
+ ) %&gt;%
+ filter(n &gt; 100) %&gt;%
+ arrange(desc(delay))
+</code></pre>
+<p>Functions fit best into a pipe when:</p>
+<ol style="list-style-type: decimal">
+<li>The first argument is the “data”</li>
+<li>The data is the same type across a family of functions</li>
+</ol>
+<p><strong>Tidy data</strong></p>
+<p>Tidy data is a consistent way of storing data 1. Each dataset goes in a data frame. 2. Each variable goes in a column.</p>
+<p>Messy data has a varied shape</p>
+<pre><code># A tibble: 5,769 × 22
+ iso2 year m04 m514 m014 m1524 m2534 m3544 m4554 m5564 m65 mu f04 f514 f014 f1524
+ &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1 AD 1989 NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+2 AD 1990 NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+13 AD 2002 NA NA 0 0 0 1 0 0 0 NA NA NA 0 1
+14 AD 2003 NA NA 0 0 0 1 2 0 0 NA NA NA 0 1
+15 AD 2004 NA NA 0 0 0 1 1 0 0 NA NA NA 0 0
+16 AD 2005 0 0 0 0 1 1 0 0 0 0 0 0 0 1
+17 AD 2006 0 0 0 1 1 2 0 1 1 0 0 0 0 0
+# ... with 5,752 more rows, and 6 more variables: f2534 &lt;int&gt;, f3544 &lt;int&gt;, f4554 &lt;int&gt;,
+# f5564 &lt;int&gt;, f65 &lt;int&gt;, fu &lt;int&gt; </code></pre>
+<p>Tidy data has a uniform shape</p>
+<pre><code># A tibble: 35,750 × 5
+ country year sex age n
+ &lt;chr&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+1 AD 1996 f 014 0
+2 AD 1996 f 1524 1
+7 AD 1996 f 65 0
+8 AD 1996 m 014 0
+9 AD 1996 m 1524 0
+10 AD 1996 m 2534 0
+# ... with 35,740 more rows```</code></pre>
+<p>list-cols Tidy tibbles are better than tidy data frames 1. Each dataset goes in a tibble. 2. Each variable goes in a column.</p>
+<p>Tibbles are data frames that are lazy &amp; surly</p>
+<pre><code>df &lt;- tibble(xyz = &quot;a&quot;)
+df$x
+#&gt; Warning: Unknown column &#39;x&#39;
+#&gt; NULL
+df$xyz
+#&gt; [1] &quot;a&quot;</code></pre>
+<p>But also have better support for list-cols</p>
+<pre><code>data.frame(x = list(1:2, 3:5))
+#&gt; Error: arguments imply differing number
+#&gt; of rows: 2, 3
+tibble(x = list(1:2, 3:5))
+#&gt; # A tibble: 2 x 1
+#&gt; x
+#&gt; &lt;list&gt;
+#&gt; 1 &lt;int [2]&gt;
+#&gt; 2 &lt;int [3]&gt;</code></pre>
+<p>List-columns keep related things together</p>
+<p><img src="diagrams/list-column.png" width="100%" /> Anything can go in a list &amp; a list can go in a data frame</p>
+<p>sf (successor to sp) uses list-cols</p>
+<pre><code>nc &lt;- sf::st_read(system.file(&quot;shape/nc.shp&quot;, package = &quot;sf&quot;))
+nc %&gt;%
+ as_tibble() %&gt;%
+ select(NAME, FIPS, AREA, geometry)
+#&gt; # A tibble: 100 × 4
+#&gt; NAME FIPS AREA geometry
+#&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;dbl&gt; &lt;simple_feature&gt;
+#&gt; 1 Ashe 37009 0.114 &lt;MULTIPOLYGON...&gt;
+#&gt; 2 Alleghany 37005 0.061 &lt;MULTIPOLYGON...&gt;
+#&gt; 3 Surry 37171 0.143 &lt;MULTIPOLYGON...&gt;
+#&gt; 4 Currituck 37053 0.070 &lt;MULTIPOLYGON...&gt;
+#&gt; 5 Northampton 37131 0.153 &lt;MULTIPOLYGON...&gt;
+#&gt; 6 Hertford 37091 0.097 &lt;MULTIPOLYGON...&gt;
+#&gt; 7 Camden 37029 0.062 &lt;MULTIPOLYGON...&gt;
+#&gt; 8 Gates 37073 0.091 &lt;MULTIPOLYGON...&gt;
+#&gt; 9 Warren 37185 0.118 &lt;MULTIPOLYGON...&gt;
+#&gt; 10 Stokes 37169 0.124 &lt;MULTIPOLYGON...&gt;
+#&gt; # ... with 90 more rows</code></pre>
+<pre><code>nc %&gt;%
+ ggplot(aes(geometry = geometry, fill = AREA)) +
+ geom_sf() +
+ coord_sf(crs = sf::st_crs(nc))</code></pre>
+<p>list-cols are a beautiful fit to cross-validation</p>
+<p><img src="diagrams/cross-validation.png" width="100%" /></p>
+<p>Each resample becomes one row</p>
+<pre><code># A tibble: 100 x 5
+ train test .id mod rmse
+ &lt;list&gt; &lt;list&gt; &lt;chr&gt; &lt;list&gt; &lt;dbl&gt;
+1 &lt;S3: resample&gt; &lt;S3: resample&gt; 001 &lt;S3: lm&gt; 0.5661605
+2 &lt;S3: resample&gt; &lt;S3: resample&gt; 002 &lt;S3: lm&gt; 0.2399357
+3 &lt;S3: resample&gt; &lt;S3: resample&gt; 003 &lt;S3: lm&gt; 3.5482986
+4 &lt;S3: resample&gt; &lt;S3: resample&gt; 004 &lt;S3: lm&gt; 0.2396810
+5 &lt;S3: resample&gt; &lt;S3: resample&gt; 005 &lt;S3: lm&gt; 0.1591336
+... with 90 more rows</code></pre>
+<p><strong>Conclusion</strong> Four important facts: 1. It exists 2. It has a website 3. It has a package 4. It has a book</p>
+<p>Four underlying principles: 1. Each function encapsulates one task 2. And is either a query or a command 3. Functions are composed with %&gt;% 4. And use tidy tibbles as primary data structure</p>
+<div id="exercise" class="section level2">
+<h2>Exercise</h2>
+<p><strong>Data Tidying</strong> “Tidy datasets are all alike but every messy dataset is messy in its own way.” – Hadley Wickham</p>
+<p>Data science, at its heart, is a computer programming exercise. Data scientists use computers to store, transform, visualize, and model their data. As a result, every data science project begins with the same task: you must prepare your data to use it with a computer. In the wild, data sets come in many different formats, but each computer program expects your data to be organized in a predetermined way, which may vary from program to program.</p>
+<p>In this chapter, you will learn the best way to organize your data for R, a task that I call data tidying. This may seem like an odd place to start, but tidying data is the most fruitful skill you can learn as a data scientist. It will save you hours of time and make your data much easier to visualize, manipulate, and model with R.</p>
+<p>Note that this chapter explains how to change the format, or layout, of tabular data. To learn how to use different file formats with R, see Appendix B: Data Sources.</p>
+<p><strong>Outline</strong> In Section 2.1, you will learn how the features of R determine the best way to layout your data. This section introduces “tidy data,” a way to organize your data that works particularly well with R.</p>
+<p>Section 2.2 teaches the basic method for making untidy data tidy. In this section, you will learn how to reorganize the values in your data set with the the spread() and gather() functions of the tidyr package.</p>
+<p>Section 2.3 explains how to split apart and combine values in your data set to make them easier to access with R.</p>
+<p>Section 2.4 concludes the chapter, combining everything you’ve learned about tidyr to tidy a real data set on tuberculosis epidemiology collected by the World Health Organization.</p>
+<p>계속 <a href="http://garrettgman.github.io/tidying/" class="uri">http://garrettgman.github.io/tidying/</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+
+</body>
+</html>

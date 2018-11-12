@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Wrangling with R</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Wrangling with R
+
+---
+
+
+## tidyr &amp; dplyr
+
+Two packages to help you work with the structure of data.
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/dplyr_cheatsheet.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/dplyr_cheatsheet.png" width="629" /&gt;
+https://www.rstudio.com/resources/cheatsheets/
+
+---
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/pipe.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/pipe.png" width="1229" /&gt;
+
+
+--- 
+
+Data sets come in many formats
+…but R prefers just one.
+
+
+
+---
+## pipe
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/pipe.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/pipe.png" width="1229" /&gt;
+
+---
+## tidy data
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/tidy_data.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/tidy_data.png" width="1383" /&gt;
+
+### Examples:
+
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/examples.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/examples.png" width="1383" /&gt;
+
+---
+## tidyr
+
+A package that reshapes the layout of
+tables.
+
+Two main functions: gather() and spread()
+
+
+### test
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/test.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/test.png" width="1083" /&gt;
+
+
+
+--- 
+
+## gather
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/gather.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/gather.png" width="1285" /&gt;
+---
+
+## gather
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/gather2.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/gather2.png" width="1304" /&gt;
+
+
+---
+
+## test2
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/test2.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/test2.png" width="935" /&gt;
+
+
+
+---
+
+## spread
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/spread.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/spread.png" width="1289" /&gt;
+---
+
+## spread
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/spread2.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/spread2.png" width="1319" /&gt;
+
+---
+
+## gther &amp; spread
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/gather-spread.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/gather-spread.png" width="1187" /&gt;
+
+---
+
+## separate
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/separate.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/separate.png" width="1265" /&gt;
+
+
+
+---
+
+## unite
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/unite.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/unite.png" width="1284" /&gt;
+
+
+
+---
+
+## recap
+
+
+```r
+knitr::include_graphics("image/tb01_data-wrangling/recap1.png")
+```
+
+&lt;img src="image/tb01_data-wrangling/recap1.png" width="1208" /&gt;
+
+
+--
+
+## dplyr
+
+A package that helps transform tabular data.
+
+
+&gt; Data sets contain more information than they display
+
+?select
+?filter
+?arrange
+?mutate
+?summarise
+?group_by
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

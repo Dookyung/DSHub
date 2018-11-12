@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>R Vocabulary</title>
+
+<script src="site_libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs/highlight.js"></script>
+<link href="site_libs/font-awesome/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Science Hub with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="course.html">Lessons</a>
+</li>
+<li>
+  <a href="Practice.html">Coding Exercise</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://dookyung.github.io/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R Vocabulary</h1>
+
+</div>
+
+
+<div id="the-basics" class="section level2">
+<h2>The basics</h2>
+<pre><code># The first functions to learn
+?
+str
+
+# Important operators and assignment
+%in%, match
+=, &lt;-, &lt;&lt;-
+$, [, [[, head, tail, subset
+with
+assign, get
+
+# Comparison 
+all.equal, identical
+!=, ==, &gt;, &gt;=, &lt;, &lt;=
+is.na, complete.cases
+is.finite
+
+# Basic math
+*, +, -, /, ^, %%, %/%
+abs, sign
+acos, asin, atan, atan2
+sin, cos, tan
+ceiling, floor, round, trunc, signif
+exp, log, log10, log2, sqrt
+
+max, min, prod, sum
+cummax, cummin, cumprod, cumsum, diff
+pmax, pmin
+range
+mean, median, cor, sd, var
+rle
+
+# Functions to do with functions
+function
+missing
+on.exit
+return, invisible
+
+# Logical &amp; sets 
+&amp;, |, !, xor
+all, any
+intersect, union, setdiff, setequal
+which
+
+# Vectors and matrices
+c, matrix
+# automatic coercion rules character &gt; numeric &gt; logical
+length, dim, ncol, nrow
+cbind, rbind
+names, colnames, rownames
+t
+diag
+sweep
+as.matrix, data.matrix
+
+# Making vectors 
+c
+rep, rep_len
+seq, seq_len, seq_along
+rev
+sample
+choose, factorial, combn
+(is/as).(character/numeric/logical/...)
+
+# Lists &amp; data.frames 
+list, unlist
+data.frame, as.data.frame
+split
+expand.grid
+
+# Control flow 
+if, &amp;&amp;, || (short circuiting)
+for, while
+next, break
+switch
+ifelse
+
+# Apply &amp; friends
+lapply, sapply, vapply
+apply
+tapply
+replicate</code></pre>
+<p>Common data structures</p>
+<pre><code># Date time
+ISOdate, ISOdatetime, strftime, strptime, date
+difftime
+julian, months, quarters, weekdays
+library(lubridate)
+
+# Character manipulation 
+grep, agrep
+gsub
+strsplit
+chartr
+nchar
+tolower, toupper
+substr
+paste
+trimws
+library(stringr)
+
+# Factors 
+factor, levels, nlevels
+reorder, relevel
+cut, findInterval
+interaction
+options(stringsAsFactors = FALSE)
+
+# Array manipulation
+array
+dim
+dimnames
+aperm
+library(abind)</code></pre>
+</div>
+<div id="statistics" class="section level2">
+<h2>Statistics</h2>
+<pre><code># Ordering and tabulating 
+duplicated, unique
+merge
+order, rank, quantile
+sort
+table, ftable
+
+# Linear models 
+fitted, predict, resid, rstandard
+lm, glm
+hat, influence.measures
+logLik, df, deviance
+formula, ~, I
+anova, coef, confint, vcov
+contrasts
+
+# Miscellaneous tests
+apropos(&quot;\\.test$&quot;)
+
+# Random variables 
+(q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom, 
+  hyper, lnorm, logis, multinom, nbinom, norm, pois, signrank, t, 
+  unif, weibull, wilcox, birthday, tukey)
+
+# Matrix algebra 
+crossprod, tcrossprod
+eigen, qr, svd
+%*%, %o%, outer
+rcond
+solve</code></pre>
+</div>
+<div id="working-with-r" class="section level2">
+<h2>Working with R</h2>
+<pre><code># Workspace 
+ls, exists, rm
+getwd, setwd
+q
+source
+install.packages, library, require
+
+# Help
+help, ?
+help.search
+apropos
+RSiteSearch
+citation
+demo
+example
+vignette
+
+# Debugging
+traceback
+browser
+recover
+options(error = )
+stop, warning, message
+tryCatch, try</code></pre>
+</div>
+<div id="io" class="section level2">
+<h2>I/O</h2>
+<pre><code># Output
+print, cat
+message, warning
+dput
+format
+sink, capture.output
+sprintf
+
+# Reading and writing data
+data
+count.fields
+read.csv, write.csv
+read.delim, write.delim
+read.fwf
+readLines, writeLines
+readRDS, saveRDS
+load, save
+library(foreign)
+
+# Files and directories 
+dir
+basename, dirname, tools::file_ext
+file.path
+path.expand, normalizePath
+file.choose
+file.copy, file.create, file.remove, file.rename, dir.create
+file.exists, file.info
+tempdir, tempfile
+download.file, library(downloader)</code></pre>
+</div>
+<div id="apply--" class="section level2">
+<h2>apply 계열 함수</h2>
+<table>
+<thead>
+<tr class="header">
+<th>function</th>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>apply()</td>
+<td>배열 또는 행렬</td>
+<td>배열 또는 리스트</td>
+</tr>
+<tr class="even">
+<td>lapply()</td>
+<td>벡터, 리스트, 표현식</td>
+<td>리스트 반환</td>
+</tr>
+<tr class="odd">
+<td>sapply()</td>
+<td>lapply와 유사</td>
+<td>백터, 행력, 배열</td>
+</tr>
+<tr class="even">
+<td>tapply()</td>
+<td>데이터를 그룹으로 묶은뒤 함수 적용</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>mapply()</td>
+<td>여러 벡터, 리스트를 함수의 인자들로 받아 처리</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>d &lt;- matrix(1:9, ncol=3)
+
+d</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<pre class="r"><code>apply(d, 1, sum)</code></pre>
+<pre><code>## [1] 12 15 18</code></pre>
+<pre class="r"><code>apply(d, 2, sum)</code></pre>
+<pre><code>## [1]  6 15 24</code></pre>
+<pre class="r"><code>result &lt;- lapply(1:3, function(x){x*2})</code></pre>
+<div id="problems" class="section level4">
+<h4>problems!!!</h4>
+<p>데이터 프레임을 처리한 결과를 리스트로 얻은 뒤 해당 리스트를 다시 데이터 프레임으로 변환할 필요가 있을 때 단계가 복잡</p>
+<pre class="r"><code>d &lt;- as.data.frame(matrix(unlist(lapply(iris[,1:4], mean)),
+                                                    ncol=4, byrow=TRUE))
+
+names(d) &lt;-  names(iris[,1:4])
+d</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1     5.843333    3.057333        3.758    1.199333</code></pre>
+<pre class="r"><code>data.frame(do.call(cbind, lapply(iris[,1:4], mean)))</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1     5.843333    3.057333        3.758    1.199333</code></pre>
+</div>
+</div>
+<div id="--" class="section level2">
+<h2>데이터별 활용기술 권고</h2>
+<table>
+<thead>
+<tr class="header">
+<th>처리속도</th>
+<th>메모리 이내(50%, 1~4G)</th>
+<th>10~100 Giga</th>
+<th>tera 급</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>배치, 분석</td>
+<td>dplyr</td>
+<td>DB(RSQLite)</td>
+<td>Sparklyr with Hadoop Cluster</td>
+</tr>
+<tr class="even">
+<td>near 실시간</td>
+<td>Parallel, DT, feather</td>
+<td>Monetdb</td>
+<td>Empala 등 …</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+
+</body>
+</html>

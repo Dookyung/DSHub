@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Apply functions with purrr</title>
+
+<script src="site_libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs/highlight.js"></script>
+<link href="site_libs/font-awesome/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Science Hub with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="course.html">Lessons</a>
+</li>
+<li>
+  <a href="Practice.html">Coding Exercise</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://dookyung.github.io/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Apply functions with purrr</h1>
+
+</div>
+
+
+<div id="purrr-package" class="section level2">
+<h2>purrr package</h2>
+<p>The <strong>purrr package</strong> makes it easy to work with lists and functions. This cheatsheet will remind you how to manipulate lists with purrr as well as how to apply functions iteratively to each element of a list or vector. The back of the cheatsheet explains how to work with list-columns. With <strong>list columns</strong>, you can use a simple data frame to organize any collection of objects in R.</p>
+</div>
+<div id="apply-functions" class="section level2">
+<h2>Apply Functions</h2>
+<p>Map functions apply a function iteratively to each element of a list or vector.</p>
+<ul>
+<li>map(.x, .f, …) : Apply a function to each element of a list or vector.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>x = c(TRUE,TRUE,FALSE)
+map(x, is.logical)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/map01.png"></p>
+</div>
+</div>
+<ul>
+<li>map2(.x, ,y, .f, …): Apply a function to pairs of elements from two lists, vectors.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>map2(x, y, sum)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/map2.png"></p>
+</div>
+</div>
+<ul>
+<li>pmap(.l, .f, …) Apply a function to groups of elements from list of lists, vectors.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>pmap(list(x, y, z), sum, na.rm = TRUE)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/pmap.png"></p>
+</div>
+</div>
+<ul>
+<li>invoke_map(.f, .x = list(NULL), …, .env=NULL) Run each function in a list. Also invoke.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>l &lt;- list(var, sd); 
+invoke_map(l, x = 1:9)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/invoke_map.png"></p>
+</div>
+</div>
+<ul>
+<li><p>lmap(.x, .f, …) Apply function to each list-element of a list or vector.</p></li>
+<li><p>imap(.x, .f, …) Apply .f to each element of a list or vector and its index.</p></li>
+</ul>
+<div id="output" class="section level3">
+<h3>OUTPUT</h3>
+<p>map(), map2(), pmap(), imap and invoke_map each return a list. Use a suffixed version to return the results as a specific type of flat vector, e.g. map2_chr, pmap_lgl, etc.</p>
+<p>Use walk, walk2, and pwalk to trigger side effects. Each return its input invisibly.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">function</th>
+<th align="left">returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">map</td>
+<td align="left">list</td>
+</tr>
+<tr class="even">
+<td align="center">map_chr</td>
+<td align="left">character vector</td>
+</tr>
+<tr class="odd">
+<td align="center">map_dbl</td>
+<td align="left">double (numeric) vector</td>
+</tr>
+<tr class="even">
+<td align="center">map_dfc</td>
+<td align="left">data frame (column bind)</td>
+</tr>
+<tr class="odd">
+<td align="center">map_dfr</td>
+<td align="left">data frame (row bind)</td>
+</tr>
+<tr class="even">
+<td align="center">map_int</td>
+<td align="left">integer vector</td>
+</tr>
+<tr class="odd">
+<td align="center">map_lgl</td>
+<td align="left">logical vector</td>
+</tr>
+<tr class="even">
+<td align="center">walk</td>
+<td align="left">triggers side effects, returns the input invisibly</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="shortcuts---within-a-purrr-function" class="section level3">
+<h3>SHORTCUTS - within a purrr function:</h3>
+<ul>
+<li>“name” becomes function(x) x[[“name”]],
+<ul>
+<li>e.g. map(l, “a”) extracts a from each element of l</li>
+</ul></li>
+<li>~ .x becomes function(x) x,
+<ul>
+<li>e.g. map(l, ~ 2 +.x) becomes map(l, function(x) 2 + x )</li>
+</ul></li>
+<li>~ .x .y becomes function(.x, .y) .x .y,
+<ul>
+<li>e.g. map2(l, p, ~ .x +.y ) becomes map2(l, p, function(l, p) l + p )</li>
+</ul></li>
+<li>~ ..1 ..2 etc becomes function(..1, ..2, etc) ..1 ..2 etc,
+<ul>
+<li>e.g. pmap(list(a, b, c), ~ ..3 + ..1 - ..2) becomes pmap(list(a, b, c), function(a, b, c) c + a - b)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="work-with-lists" class="section level2">
+<h2>Work with Lists</h2>
+<div id="filter-lists" class="section level3">
+<h3>FILTER LISTS</h3>
+<ul>
+<li>pluck(.x, …, .default=NULL) : Select an element by name or index, pluck(x,“b”) ,or its attribute with attr_getter.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>pluck(x,&quot;b&quot;,attr_getter(&quot;n&quot;))</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/pluck.png"></p>
+</div>
+</div>
+<ul>
+<li>keep(.x, .p, …) : Select elements that pass a logical test.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>keep(x, is.na)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/keep.png"></p>
+</div>
+</div>
+<ul>
+<li>discard(.x, .p, …) Select elements that do not pass a logical test.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>discard(x, is.na)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/discard.png"></p>
+</div>
+</div>
+<ul>
+<li>compact(.x, .p = identity) Drop empty elements.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>compact(x)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/compact.png"></p>
+</div>
+</div>
+<ul>
+<li>head_while(.x, .p, …) Return head elements until one does not pass. Also tail_while.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>head_while(x, is.character)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/head_while.png"></p>
+</div>
+</div>
+</div>
+<div id="summarise-lists" class="section level3">
+<h3>SUMMARISE LISTS</h3>
+<ul>
+<li>every(.x, .p, …) Do all elements pass a test?</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>every(x, is.character)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/every.png"></p>
+</div>
+</div>
+<ul>
+<li>some(.x, .p, …) Do some elements pass a test?</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>some(x, is.character)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/some.png"></p>
+</div>
+</div>
+<ul>
+<li>has_element(.x, .y) Does a list contain an element?</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>has_element(x, &quot;foo&quot;)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/has_element.png"></p>
+</div>
+</div>
+<ul>
+<li>detect(.x, .f, …, .right=FALSE, .p) Find first element to pass.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>detect(x, is.character)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/detect.png"></p>
+</div>
+</div>
+<ul>
+<li>detect_index(.x, .f, …, .right = FALSE, .p) Find index of first element to pass.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>detect_index(x, is.character)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/detect_index.png"></p>
+</div>
+</div>
+<ul>
+<li>vec_depth(x) Return depth(number of levels of indexes).</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>vec_depth(x)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img class="holder" src="myss/vector_depth.png"></p>
+</div>
+</div>
+</div>
+<div id="transform-lists" class="section level3">
+<h3>TRANSFORM LISTS</h3>
+<ul>
+<li>modify(.x, .f, …) Apply function to each element. Also map, map_chr, map_dbl, map_dfc, map_dfr, map_int,map_lgl.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>modify(x, ~.+ 2)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img class="holder" src="myss/modify.png"></p>
+</div>
+</div>
+<ul>
+<li>modify_at(.x, .at, .f, …) Apply function to elements by name or index. Also map_at.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>modify_at(x, &quot;b&quot;, ~.+ 2)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img class="holder"src="myss/modify_at.png"></p>
+</div>
+</div>
+<ul>
+<li>modify_if(.x, .p, .f, …) Apply function to elements that pass a test. Also map_if.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>modify_if(x, is.numeric,~.+2)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/modify_if.png"></p>
+</div>
+</div>
+<ul>
+<li>modify_depth(.x,.depth,.f,…) Apply function to each element at a given level of a list.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>modify_depth(x, 1, ~.+ 2)</code></pre>
+</div>
+</div>
+</div>
+<div id="reshape-lists" class="section level3">
+<h3>RESHAPE LISTS</h3>
+<ul>
+<li>flatten(.x) Remove a level of indexes from a list. Also flatten_chr, flatten_dbl, flatten_dfc, flatten_dfr, flatten_int, flatten_lgl.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>flatten(x)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/flatten.png"></p>
+</div>
+</div>
+<ul>
+<li>transpose(.l, .names = NULL) Transposes the index order in a multi-level list.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>transpose(x)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/transpose.png"></p>
+</div>
+</div>
+</div>
+<div id="join-to-lists" class="section level3">
+<h3>JOIN (TO) LISTS</h3>
+<ul>
+<li>append(x, values, after = length(x)) Add to end of list.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>append(x, list(d = 1))</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/append.png"></p>
+</div>
+</div>
+<ul>
+<li>prepend(x, values, before =1) Add to start of list.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>prepend(x, list(d = 1))</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/prepend.png"></p>
+</div>
+</div>
+<p>*splice(…) Combine objects into a list, storing S3 objects as sub-lists.</p>
+<div class="row">
+<div class="col-md-6">
+<pre><code>splice(x, y, &quot;foo&quot;)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/splice.png"></p>
+</div>
+</div>
+</div>
+<div id="work-with-lists-1" class="section level3">
+<h3>WORK WITH LISTS</h3>
+<ul>
+<li>array_tree(array, margin = NULL) Turn array into list. Also array_branch.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>array_tree(x, margin = 3)</code></pre>
+</div>
+<div class="col-md-6">
+<img src="myss/array_tree.png">
+</div>
+</div>
+<ul>
+<li>cross2(.x, .y, .filter = NULL) All combinations of .x and .y. Also cross, cross3, cross_df.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>cross2(1:3, 4:6)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/cross2.png"></p>
+</div>
+</div>
+<ul>
+<li>set_names(x, nm = x) Set the names of a vector/list directly or with a function.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>set_names(x, c(&quot;p&quot;, &quot;q&quot;, &quot;r&quot;))
+set_names(x, tolower)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/set_names.png"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="reduce-lists" class="section level2">
+<h2>Reduce Lists</h2>
+<ul>
+<li>reduce(.x, .f, …, .init) Apply function recursively to each element of a list or vector. Also reduce_right, reduce2, reduce2_right.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>reduce(x, sum)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/reduce.png"></p>
+</div>
+</div>
+<ul>
+<li>accumulate(.x, .f, …, .init) Reduce, but also return intermediate results. Also accumulate_right.</li>
+</ul>
+<div class="row">
+<div class="col-md-6">
+<pre><code>accumulate(x, sum)</code></pre>
+</div>
+<div class="col-md-6">
+<p><img src="myss/accumulate.png"></p>
+</div>
+</div>
+</div>
+<div id="modify-function-behavior" class="section level2">
+<h2>Modify function behavior</h2>
+<ul>
+<li><p>compose() Compose multiple functions.</p></li>
+<li><p>lift() Change the type of input a function takes. Also lift_dl, lift_dv, lift_ld, lift_lv, lift_vd, lift_vl.</p></li>
+<li><p>rerun() Rerun expression n times.</p></li>
+<li><p>negate() Negate a predicate function (a pipe friendly !)</p></li>
+<li><p>partial() Create a version of a function that has some args preset to values.</p></li>
+<li><p>safely() Modify func to return list of results and errors.</p></li>
+<li><p>quietly() Modify function to return list of results, output, messages, warnings.</p></li>
+<li><p>possibly() Modify function to return default value whenever an error occurs (instead of error).</p></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+
+</body>
+</html>

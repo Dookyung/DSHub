@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs/highlight.js"></script>
+<link href="site_libs/font-awesome/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Science Hub with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="course.html">Lessons</a>
+</li>
+<li>
+  <a href="Practice.html">Coding Exercise</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://dookyung.github.io/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="fast-data-transformation-with-data.table" class="section level1">
+<h1>Fast Data Transformation with data.table</h1>
+<div id="basics" class="section level2">
+<h2>Basics</h2>
+<pre class="r"><code>library(data.table)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     between, first, last</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     transpose</code></pre>
+<p>data.table is an extremely fast and memory efficient package for transforming data in R. It works by converting R’s native data frame objects into data.tables with new and enhanced functionality. The basics of working with data.tables are:</p>
+<p><img src="myss/data.table/dt.png" width="30%" /></p>
+<ul>
+<li>Take data.table <strong>dt</strong>,</li>
+<li>subset rows using <strong>i</strong>,</li>
+<li>manipulate columns with <strong>j</strong>,</li>
+<li>grouped according to <strong>by</strong>.</li>
+</ul>
+<p>data.tables are also data frames – functions that work with data frames therefore also work with data.tables.</p>
+</div>
+<div id="create-a-data.table" class="section level2">
+<h2>Create a data.table</h2>
+<p>create a data.table from scratch. Analogous to data.frame()</p>
+<pre class="r"><code>data.table(a = c(1, 2), b = c(&quot;a&quot;, &quot;b&quot;))</code></pre>
+<pre><code>##    a b
+## 1: 1 a
+## 2: 2 b</code></pre>
+<p>convert a data frame or a list to a data.table.</p>
+<pre class="r"><code>as.data.table(df)
+setDT(df)</code></pre>
+<ul>
+<li>SET FUNCTIONS AND := data.table’s functions prefixed with “set” and the operator “:=” work without “&lt;-” to alter data without making copies in memory. E.g. the more efficient “setDT(df)” is analogous to “df &lt;- as.data.table(df)”.</li>
+</ul>
+</div>
+<div id="subset-rows-using-i" class="section level2">
+<h2>Subset rows using i</h2>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># subset rows based on row numbers.
+dt[1:2, ] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/subset01.png">
+</div>
+<div class="grid-item">
+<pre><code># subset rows based on values in one or more columns.
+dt[a &gt; 5, ] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/subset02.png">
+</div>
+</div>
+<p><strong>LOGICAL OPERATORS TO USE IN i</strong></p>
+<blockquote>
+<p>&lt;, &lt;=, &gt;, &gt;=, is.na(), !is.na(), %in%, !, |, &amp;, %like%, %between%</p>
+</blockquote>
+</div>
+<div id="manipulate-columns-with-j" class="section level2">
+<h2>Manipulate columns with j</h2>
+<p><strong>EXTRACT</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># extract column(s) by number. Prefix column numbers with “-” to drop.
+dt[, c(2)] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/extract01.png">
+</div>
+<div class="grid-item">
+<pre><code># extract b c b c column(s) by name.
+dt[, .(b, c)] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/extract02.png">
+</div>
+</div>
+<p><strong>SUMMRIZE</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># create a data.table with new columns based on the summarized values of rows.
+dt[, .(x = sum(a))]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/summarize.png">
+</div>
+</div>
+<p>Summary functions like mean(), median(), min(), max(), etc. may be used to summarize rows.</p>
+<p><strong>COMPUTE COLUMNS</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># compute a column based on an expression.
+dt[, c := 1 + 2]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/compute01.png">
+</div>
+<div class="grid-item">
+<pre><code># compute a column based on an expression but only for a subset of rows.
+dt[a == 1, c := 1 + 2] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/compute02.png">
+</div>
+<div class="grid-item">
+<pre><code># compute multiple columns based on separate expressions.
+dt[, `:=`(c = 1 , d = 2)]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/compute03.png">
+</div>
+</div>
+<p><strong>DELETE COLUMN</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># delete a column.
+dt[, c := NULL] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/delite.png">
+</div>
+</div>
+<p><strong>CONVERT COLUMN TYPE</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># convert the type of a column using as.integer(), as.numeric(), as.character(), as.Date(), etc.
+dt[, b := as.integer(b)] </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/coltype.png">
+</div>
+</div>
+</div>
+<div id="group-according-to-by" class="section level2">
+<h2>Group according to by</h2>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># group rows by values in specified column(s).
+dt[, j, by = .(a)]</code></pre>
+<pre><code># group and simultaneously sort rows according to values in specified column(s).
+dt[, j, keyby = .(a)]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/group.png">
+</div>
+</div>
+<p><strong>COMMON GROUPED OPERATIONS</strong></p>
+<pre><code># summarize rows within groups.
+dt[, .(c = sum(b)), by = a]
+# create a new column and compute rows within groups.
+dt[, c := sum(b), by = a] – 
+# extract first row of groups.
+dt[, .SD[1], by = a]
+# extract last row of groups.
+dt[, .SD[.N], by = a]</code></pre>
+</div>
+<div id="chaining" class="section level2">
+<h2>Chaining</h2>
+<p><strong>dt[…][…]</strong></p>
+<p>perform a sequence of data.table operations by chaining multiple “[]”.</p>
+</div>
+<div id="functions-for-data.tables" class="section level2">
+<h2>Functions for data.tables</h2>
+<p><strong>REORDER</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># reorder a data.table according to specified columns. Prefix column names with “-” for descending order.
+setorder(dt, a, -b) </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/reorder.png">
+</div>
+</div>
+<p><strong>UNIQUE ROWS</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># extract unique rows based on columns specified in “by”. Leave out “by” to use all columns.
+unique(dt, by = c(&quot;a&quot;, &quot;b&quot;))</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/unique.png">
+</div>
+</div>
+<pre><code># return the number of unique rows based on columns specified in “by”.
+uniqueN(dt, by = c(&quot;a&quot;, &quot;b&quot;))</code></pre>
+<p><strong>RENAME COLUMNS</strong></p>
+<div class="grid-container_2to1">
+<div class="grid-item">
+<pre><code># rename column(s).
+setnames(dt, c(&quot;a&quot;, &quot;b&quot;), c(&quot;x&quot;, &quot;y&quot;)) </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/rename.png">
+</div>
+</div>
+<p><strong>SET KEYS</strong></p>
+<pre><code># set keys in a data.table to enable faster repeated lookups in specified column(s) using “dt[.(value), ]” or for merging without specifying merging columns “dt_a[dt_b]”.
+setkey(dt, a, b)</code></pre>
+</div>
+<div id="combine-data.tables" class="section level2">
+<h2>Combine data.tables</h2>
+<p><strong>JOIN</strong></p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code># join two data.tables based on rows with equal values. You can leave out “on” if keys are already set.
+dt_a[dt_b, on = .(b = y)]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/join01.png">
+</div>
+<div class="grid-item">
+<pre><code># join two data.tables based on rows with equal and unequal values.
+dt_a[dt_b, on = .(b = y, c &gt; z)]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/join02.png">
+</div>
+</div>
+<p><br></p>
+<strong>ROLLING JOIN</strong>
+<div class="grid-item">
+<img src="myss/data.table/rolling_join.png">
+</div>
+<pre><code># rolling join matches rows, according to id columns, but only keeps the most recent preceding match with the left table, according to date columns. Use “roll = -Inf” to reverse direction.
+dt_a[dt_b, on = .(id = id, date = date), roll = TRUE] </code></pre>
+<p><strong>BIND</strong></p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code># combine rows of two data.tables.
+rbind(dt_a, dt_b)</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/rbind.png">
+</div>
+<div class="grid-item">
+<pre><code># combine columns of two data.tables.
+cbind(dt_a, dt_b) </code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/cbind.png">
+</div>
+</div>
+</div>
+<div id="reshape-a-data.table" class="section level2">
+<h2>Reshape a data.table</h2>
+<p><strong>RESHAPE TO WIDE FORMAT</strong></p>
+<p>Reshape a data.table from long to wide format.</p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code>dcast(dt, id ~ y, value.var = c(&quot;a&quot;, &quot;b&quot;))</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/dcast.png">
+</div>
+</div>
+<ul>
+<li><strong>dt</strong> A data.table.</li>
+<li><strong>id ~ y</strong> Formula with a LHS: id column(s) containing id(s) for multiple entries. And a RHS: column(s) with value(s) to spread in column headers.</li>
+<li><strong>value.var</strong> Column(s) containing values to fill into cells.</li>
+</ul>
+<p><strong>RESHAPE TO LONG FORMAT</strong></p>
+<p>Reshape a data.table from wide to long format.</p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code>melt(dt, id.vars = c(&quot;id&quot;), 
+     measure = patterns(&quot;^a&quot;, &quot;^b&quot;), 
+     variable.name = &quot;y&quot;, 
+     value.name = c(&quot;a&quot;, &quot;b&quot;))</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/melt.png">
+</div>
+</div>
+<ul>
+<li><strong>dt</strong> A data.table.</li>
+<li><strong>id.vars</strong> Id column(s) with id(s) for multiple entries.</li>
+<li><strong>measure</strong> Column(s) containing values to fill into cells (often in pattern form).</li>
+<li><strong>variable.name</strong> Name(s) of new column(s) for variables and values derived from old headers.</li>
+<li><strong>value.name</strong></li>
+</ul>
+</div>
+<div id="sd" class="section level2">
+<h2>.SD</h2>
+<p>Refer to a Subset of the Data with .SD.</p>
+<p><strong>MULTIPLE COLUMN TYPE CONVERSION</strong></p>
+<pre><code># convert the type of designated columns.
+dt[, lapply(.SD, as.character), .SDcols = c(&quot;a&quot;, &quot;b&quot;)]</code></pre>
+<p><strong>GROUP OPTIMA</strong></p>
+<p>within groups, extract rows with the maximum value in a specified column. Also works with which.min() and which(). Similar to “.SD[.N]” and “.SD[1]”.</p>
+<pre><code>dt[, .SD[which.max(a)], by = b]</code></pre>
+</div>
+<div id="sequential-rows" class="section level2">
+<h2>Sequential rows</h2>
+<p><strong>ROW IDS</strong></p>
+<p>within groups, compute a column with sequential row IDs.</p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code>dt[, c := 1:.N, by = b]</code></pre>
+</div>
+<div class="grid-item">
+<img src="myss/data.table/ids.png">
+</div>
+</div>
+<p><strong>LAG &amp; LEAD</strong></p>
+<p>within groups, duplicate a column with rows lagged by specified amount.</p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code>dt[, c := shift(a, 1), by = b]</code></pre>
+</div>
+<div class="grid-item">
+<p><img src="myss/data.table/lag.png" width="30%" /></p>
+</div>
+<p>within groups, duplicate a column with rows leading by specified amount.</p>
+<div class="grid-container2">
+<div class="grid-item">
+<pre><code>dt[, c := shift(a, 1, type = &quot;lead&quot;), by = b]</code></pre>
+</div>
+</div>
+</div>
+<div id="fread-fwrite" class="section level2">
+<h2>fread &amp; fwrite</h2>
+<p><strong>IMPORT</strong></p>
+<p>fread(“file.csv”) – read data from a flat file such as .csv or .tsv into R.</p>
+<p>fread(“file.csv”, select = c(“a”, “b”)) – read specified column(s) from a flat file into R.</p>
+<p><strong>EXPORT</strong></p>
+<p>fwrite(dt, file = “file.csv”) – write data to a flat file from R.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Working with Big Data in R</title>
+    <meta charset="utf-8">
+    <link href="site_libs/font-awesome/css/fa-svg-with-js.css" rel="stylesheet" />
+    <script src="site_libs/font-awesome/js/fontawesome-all.min.js"></script>
+    <script src="site_libs/font-awesome/js/fa-v4-shims.min.js"></script>
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Working with Big Data in R
+
+---
+
+exclude: true
+
+
+---
+
+## dplyr provides built-in SQL backend
+
+1. Connects to DBMS’s
+
+2. Transforms R code to SQL, sends to DBMS to run in DBMS
+
+3. Collect results into R
+
+&lt;img src="image/bk06_working-with-bigdata/using_dplyr.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## DB Connection
+
+&lt;img src="image/bk06_working-with-bigdata/connect.png" width="100%" style="display: block; margin: auto;" /&gt;
+---
+
+## Dplyr driver functions
+
+
+&lt;img src="image/bk06_working-with-bigdata/SQLite.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## dplyr command to SQL
+
+
+&lt;img src="image/bk06_working-with-bigdata/dplyr.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Lazy Execution 
+
+dplyr will only retrieve the first 10 rows of a query when you look at the output.
+
+
+&lt;img src="image/bk06_working-with-bigdata/lazy.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Collect
+
+
+&lt;img src="image/bk06_working-with-bigdata/collect.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## collapse
+
+
+&lt;img src="image/bk06_working-with-bigdata/collapse.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Fit model
+
+
+
+&lt;img src="image/bk06_working-with-bigdata/fit.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## copy to
+
+
+&lt;img src="image/bk06_working-with-bigdata/copyto.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## close
+
+
+&lt;img src="image/bk06_working-with-bigdata/close.png" width="100%" style="display: block; margin: auto;" /&gt;
+---
+## alternative 
+
+
+&lt;img src="image/bk06_working-with-bigdata/alternative.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+##  
+
+
+&lt;img src="image/bk06_working-with-bigdata/bigdata_visualization.png" width="100%" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

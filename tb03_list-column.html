@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nested Data</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Nested Data
+
+---
+
+
+
+
+---
+
+## Nested Data
+
+* A nested data frame stores individual tables within the cells of a larger, organizing table.
+
+* Use a nested data frame to:
+
+    * preserve relationships between observations and subsets of data
+    * manipulate many sub-tables at once with the purrr functions map(), map2(), or pmap().
+    
+&lt;img src="myss/nestdata.png" width="70%" /&gt;
+
+
+---
+
+### How to create a nested data frame:
+
+1. Group the data frame into groups with dplyr::group_by()
+
+2. Use nest() to create a nested data frame with one row per group
+
+
+```r
+knitr::include_graphics("myss/nesteddata2.png")
+```
+
+&lt;img src="myss/nesteddata2.png" width="70%" /&gt;
+
+
+
+---
+### unnest()
+
+
+```r
+knitr::include_graphics("myss/unnest.png")
+```
+
+&lt;img src="myss/unnest.png" width="70%" /&gt;
+
+---
+
+## List Columns
+
+
+
+```r
+knitr::include_graphics("image/tb03_list-column/listcolumn.png")
+```
+
+&lt;img src="image/tb03_list-column/listcolumn.png" width="1393" /&gt;
+
+---
+
+## List Column Workflow
+
+
+
+```r
+knitr::include_graphics("myss/listColumn2.png")
+```
+
+&lt;img src="myss/listColumn2.png" width="100%" /&gt;
+
+
+---
+## WORK WITH LIST COLUMNS
+
+
+
+```r
+knitr::include_graphics("myss/workwithcolumnlist01.png")
+```
+
+&lt;img src="myss/workwithcolumnlist01.png" width="1316" /&gt;
+
+
+
+```r
+knitr::include_graphics("myss/workwithcolumnlist02.png")
+```
+
+&lt;img src="myss/workwithcolumnlist02.png" width="1331" /&gt;
+
+  
+
+```r
+knitr::include_graphics("myss/workwithcolumnlist03.png")
+```
+
+&lt;img src="myss/workwithcolumnlist03.png" width="1373" /&gt;
+
+---
+
+
+```r
+knitr::include_graphics("image/tb03_list-column/mapLogic.png")
+```
+
+&lt;img src="image/tb03_list-column/mapLogic.png" width="1363" /&gt;
+
+---
+
+## Simplify the List column
+
+
+```r
+knitr::include_graphics("image/tb03_list-column/mapWalk.png")
+```
+
+&lt;img src="image/tb03_list-column/mapWalk.png" width="976" /&gt;
+
+
+
+
+---
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
