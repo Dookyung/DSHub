@@ -1,0 +1,172 @@
+---
+title: "Lessons and Materials"
+---
+
+<br>
+
+## 실습자료 다운로드 
+
+- https://www.dropbox.com/sh/r9b1birgkmk2buq/AAANOUsBvKBlkE3OhKejewKKa?dl=0
+
+<br>
+
+## Introduction
+
+- [Data Science Workflow](./bk00_data-science-workflow.html)
+- How to be a Data Scientist [(slide)](./bk01_how-to-data-scientist.html)
+- [Data Science Tools](./bk02_data-science-tools.html)
+
+<br>
+
+## R 프로그래밍 기초
+
+- Base R ( [slide](./R01_Base-R-new.html) / [code](./Practice/code01.R) )  --- 수정필요
+
+- RStudio Cheat Sheet for Base-R ( [pdf](./cheat_sheet/base-r.pdf) / [html](./R02_Base-R.html) )
+
+- [R vocabulary](./bk03_r-vocabulary.html)  --- 수정 필요 
+
+- Using library ( [code](./R03_Das-intro.R) )
+
+<br>
+
+## 데이터 형태
+
+- [data structure] :csv, json, xml, tif, matrix, sdmx, deep learning    -- 추가 필요
+
+
+<br>
+
+## Tidyverse
+
+- [Tidyverse Website](https://www.tidyverse.org/)
+
+- Hadley Wickham's slide ( [pdf](./Practice/tidyverse.pdf) )
+
+- Data Wrangling with R ( [slide](./tb01_data-wrangling.html) / [pdf](./Practice/wrangling-webinar.pdf) )
+
+- dplyr basic ... [(code)](./Practice/dplyr01.R)   --- 삭제 예정
+
+- [Data Transforamation with dplyr](./tb02_dplyr.html) ( [Cheat Sheet](https://www.rstudio.com/resources/cheatsheets/#dplyr) )
+
+- [Transformation] (./tb03_transformation.html)     --- 추가 예정
+
+<br>
+
+## file handling
+
+- [Data import with readr](./Td02_readr.html) ( [Cheat Sheet](https://www.rstudio.com/resources/cheatsheets/#import) )
+
+- file & directory ( [code](./Practice/file01.R) )
+
+<br>
+
+## ggplot
+
+- [ggplot](./gg01_ggplot.html)
+- [EDA with ggplot2] (./gg01_EDA-ggplot.html)   --- 추가 예정 
+
+<br>
+
+## Model & list column
+
+- Nest data & List Column ( [slide](tb03_list-column.html) /  [code](./Practice/listcolumn.R) )  --- 수정 필요
+
+- [Apply functions with purrr](tb04_list-column2.html)  ( [Cheat Sheet](https://www.rstudio.com/resources/cheatsheets/#purrr) )  
+
+- M64_function
+- [M65_purrr -- tibble]
+
+<br>
+
+## High Performance
+
+- [data.table package](M85-datatable.html)
+
+- [feather]()
+
+
+<br>
+
+## Big data with R
+
+- [Big Data 대응전략](./bk04_bigdata-strategy.html)
+
+- Working with Big data in R ( [slide](./bk06_working-with-bigdata.html) /  [code](./Practice/bigdata2.R) )
+
+- [Artificial Intelligence](./bk05_AI.html)
+
+<br>
+
+## R의 8가지 활용 (추가예정)
+
+<br>
+
+## Shiny
+
+- Dr. Moon's Shiny Lecture Slide ( [pdf](./Practice/shinyLEcture.pdf) )
+
+<br>
+
+## R Markdown
+
+<br>
+
+## github
+
+
+
+## etc
+
+- M60_stringr
+- M61_Be_boss_factor
+- M62_lubridate
+
+
+- database
+- web 
+- stockprice
+- data.table
+- feather
+- distributed
+- parallel
+- sparklyr
+- H20
+
+
+
+## My DS Diary
+
+데이터사이언티스트로의 성장사를 기록
+
+목차
+
+왜 이책을 쓰고 있는가?
+    - 처음에는 R 기술책 ->  일기, 성장사  (능력부족 때문)
+    - 개론 쓴후 각론 써보겠음
+
+누구를 위한 책인가?
+    - 내아이 (코딩교육)
+    - 
+
+from MS Office to RStudio(R)
+
+
+파이썬 vs R
+
+R, 넌 누구냐?
+
+코딩교육의 어려움
+
+복잡함과 단순함
+
+프로그램 방식에 관한 이야기
+
+데이터 구조에 관한 이야기
+    - RDB - Star schema
+    - NoSQL
+    - 다시 RDB
+    - XML and SDMX (MS)
+    
+내가 R과 Rstudio로 하고 있는 것들?
+내가 해온 것 하고 있는 것?

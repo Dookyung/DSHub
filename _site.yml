@@ -1,0 +1,28 @@
+name: "Data Science Hub with R"
+output_dir: "."
+navbar:
+  title: "Data Science Hub with R"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lessons"
+      href: course.html
+    - text: "Coding Exercise"
+      href: Practice.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://dookyung.github.io/
+output:
+  html_document:
+    self_contained: false
+    theme: flatly
+    highlight: textmate
+    mathjax: null
+    lib_dir: libs
+    css: styles.css
+#    include:
+#      in_header: head.html
+    toc_depth: 3
+    toc_float:
+      collapsed: false
