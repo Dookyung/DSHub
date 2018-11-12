@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Data Science</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Science Hub with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="course.html">Lessons</a>
+</li>
+<li>
+  <a href="Practice.html">Coding Exercise</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://dookyung.github.io/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Data Science</h1>
+
+</div>
+
+
+<p><br></p>
+<div id="data-science" class="section level2">
+<h2>Data Science</h2>
+<ul>
+<li><p>데이터 사이언스는 데이터로 부터 새로운 통찰력과 지식을 얻기 위한 학문이자 실무분야</p></li>
+<li><p>4차 산업혁명의 근간에 데이터가 있으며, 이 분야는 컴퓨터 관련 전공자 외에도 모든 분야의 연구자들에게 기반지식으로 부상</p></li>
+</ul>
+<p><img src="diagrams/data-ability.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+</div>
+<div id="data-science-workflow" class="section level2">
+<h2>Data Science Workflow</h2>
+<p><a href="http://hadley.nz/">Hadley Wickham</a>은 <strong>data science workflow</strong>를 다음과 같이 정의:</p>
+<div class="figure" style="text-align: center">
+<img src="diagrams/data-science.png" alt="Source: R for Data Science by Garrett Grolemund and Hadley Wickham." width="70%" />
+<p class="caption">
+Source: R for Data Science by Garrett Grolemund and Hadley Wickham.
+</p>
+</div>
+<p><br></p>
+<div id="import" class="section level4">
+<h4><strong>Import</strong></h4>
+<ul>
+<li>CSV, XML, HTML, Json 등 다양한 형태의 데이터를 Web crawling 등 다양한 방식으로 수집하거나 R로 import 하는 방법 습득</li>
+</ul>
+<p><br></p>
+</div>
+<div id="tidy" class="section level4">
+<h4><strong>Tidy</strong></h4>
+<ul>
+<li><p>Tidy data와 이를 위한 Tidyverse 방법론 습득</p></li>
+<li><p>SDMX, 표준의 중요성</p></li>
+</ul>
+<p><br></p>
+</div>
+<div id="transform" class="section level4">
+<h4><strong>Transform</strong></h4>
+<ul>
+<li><p>DB를 활용한 대용량 데이터 핸들링 방법</p></li>
+<li><p>high performance computation</p></li>
+</ul>
+<p><br></p>
+</div>
+<div id="visualize" class="section level4">
+<h4><strong>Visualize</strong></h4>
+<ul>
+<li>ggplot2</li>
+</ul>
+<p><br></p>
+</div>
+<div id="model" class="section level4">
+<h4><strong>Model</strong></h4>
+<ul>
+<li><p>Leanear Regression</p></li>
+<li><p>Repeated Sales Methods</p></li>
+<li><p>tibble과 List columns을 활용한 모델링 및 분석결과 단순화 방법론</p></li>
+</ul>
+<p><br></p>
+</div>
+<div id="communicate" class="section level4">
+<h4><strong>Communicate</strong></h4>
+<ul>
+<li><p>R markdown</p></li>
+<li><p>shiny</p></li>
+</ul>
+<p><br></p>
+<p><br></p>
+</div>
+</div>
+<div id="importance-of-programming" class="section level2">
+<h2>Importance of Programming</h2>
+<p><br></p>
+<div id="benefits-to-programming-vs.gui-software" class="section level4">
+<h4><strong>Benefits to programming vs. GUI software</strong></h4>
+<ol style="list-style-type: decimal">
+<li>Automation</li>
+<li>High performance</li>
+<li>Advanced analysis</li>
+<li>Reproducibility</li>
+</ol>
+<p><br></p>
+<p><img src="diagrams/automation.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+</div>
+<div id="replicatiom-vs-reproducible-research" class="section level4">
+<h4>Replicatiom vs Reproducible Research</h4>
+<p><br></p>
+<p><strong>Replication</strong></p>
+<p>Previously researchers focused on <strong>replication</strong> - can the results be duplicated in a new study with different data? In science it is difficult to replicate articles and research, in part because authors don’t provide enough information to easily replicate experiments and studies. Institutional biases also exist against replication - no one wants to publish it, and authors don’t like to have their results challenged.</p>
+<p><br></p>
+<p><strong>Reproducibility</strong></p>
+<p><strong>Reproducibility</strong> is <em>“the idea that data analyses, and more generally, scientific claims, are published with their data and software code so that others may verify the findings and build upon them.”</em></p>
+<p><img src="diagrams/reproducible-research.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+
+</body>
+</html>

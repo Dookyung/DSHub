@@ -1,0 +1,159 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+body{
+  font-family: Helvetica;
+}
+
+
+
+.comment {
+    background-color: #e5e5e6;
+    border-radius: 7px;
+    font-family:helvetica;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.comment_line {
+    background-color: white;
+    font-family:helvetica;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 5px solid lightgrey;
+}
+
+.boxx {
+    background-color: #a5a5a7;
+    border-radius: 7px;
+    padding-left: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.boxx_line {
+    background-color: #a5a5a7;
+    border-radius: 7px;
+    padding-left: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.comment_with_line {
+    border-radius: 7px;
+    padding: 20px 0 0 20px;
+    border: 3px solid lightgrey;
+}
+
+.txt1 {
+    padding-left:20px;
+}
+
+
+.boxx2 {
+    background-color: #a5a5a7;
+    border-radius: 7px;
+    padding-left: 20px;
+    color: white;
+    font-weight: normal;
+    width: 300px;
+    margin: 20px 0 0 20px;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto 200px;
+  margin: 15px 15px 0 20px;
+}
+
+.grid-container_auto {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 15px 15px 0 20px;
+}
+
+.grid-container2 {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  margin: 15px 15px 0 20px;
+}
+
+
+.grid-container3 {
+  display: grid;
+  grid-template-columns: 100px auto auto;
+  margin: 15px 15px 0 20px;
+}
+
+.grid-container_2to1 {
+  display: grid;
+  grid-template-columns: 66% 33%;
+  margin: 15px 15px 0 20px;
+}
+.grid-container1 {
+  display: grid;
+  margin: 15px 15px 0 20px;
+}
+
+.grid-container4 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin: 15px 15px 0 20px;
+}
+
+.grid-container33 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 15px 15px 0 20px;
+}
+
+.grid-item {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.bcode {
+    color: #668cff;
+    font-weight: bold;
+    font-family:helvetica;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: inherit;
+}
+.tcode {
+    font-weight: bold;
+    font-family:helvetica;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: inherit;
+}
+
+
+
+
+
+.split-50 .column {width: 48%; margin-right: 2%;}
+
+.column {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.column {float: left;}
+
+.col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+  }

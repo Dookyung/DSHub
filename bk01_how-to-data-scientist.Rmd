@@ -1,0 +1,102 @@
+---
+title: "How to become a Data Scientist"
+#author: "Dookyung Kim"
+#date: "2018-11-13"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+mainfont: NanumGothic
+---
+exclude: true
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  width=80
+)
+
+# library(emo)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+---
+
+## Data Scientist?
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("diagrams/data-scientist.png")
+```
+
+
+<br>
+
+> “Data Scientiest is the most sexiest job of the 21st Century”
+>
+> `r tufte::quote_footer('--- by Harvard Business Review')`
+
+
+---
+
+## Data Scientist in 8 Easy Steps
+
+
+```{r echo = FALSE, out.width = "70%", fig.align='center'}
+knitr::include_graphics("diagrams/ds-info.png")
+```
+
+https://infographicjournal.com/how-to-become-a-data-scientist-in-8-easy-steps/
+
+<br>
+
+---
+background-image: url("diagrams/superman.png")
+
+---
+background-image: url("diagrams/team-sports.png")
+
+---
+background-image: url("diagrams/ds-teams.png")
+
+## Data Scientist Team
+---
+background-image: url("diagrams/ds-important.png")
+
+---
+
+## R vs Python
+
+
+- [R (programming language)](https://en.wikipedia.org/wiki/R_(programming_language)
+
+- [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)
+
+```{r echo = FALSE, out.width = "70%", fig.align='center'}
+knitr::include_graphics("diagrams/pythonvsR.png")
+```
+
+https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis
+---
+class: .large
+
+## Why R?
+
+.large[
+- [RStudio](https://www.rstudio.com/) and [Hadley Wickham](http://hadley.nz/)
+
+  *  [Tidyverse](https://www.tidyverse.org/)
+  *  Tibble & List column
+  *  [R Markdown](https://rmarkdown.rstudio.com/)
+  *  [Shiny](https://shiny.rstudio.com/)
+  *  ggplot2 - [Top 50 ggplot2 Visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+  
+
+- Reproduciable Research
+
+- Mostly Used by Statisticians
+
+]
