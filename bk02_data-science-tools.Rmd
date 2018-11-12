@@ -1,0 +1,56 @@
+---
+title: "Data Science Tools"
+output:
+  html_document:
+    df_print: paged
+    toc: yes
+    css: styles.css
+  # pdf_document:
+  #   toc: yes
+  #   latex_engine: xelatex
+mainfont: NanumGothic
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+<br>
+
+## Rstudio IDE
+
+```{r echo = FALSE, out.width = "75%"}
+knitr::include_graphics("diagrams/rstudio-editor.png")
+```
+
+<br>
+
+## Short Keys to remember
+
+|short key            |의미  
+|:--------------------|:-------------
+|Ctrl + Enter         |한줄 실행
+|Ctrl + Shift + S     |전체실행
+|Ctrl + L             |clear console
+|Alt + -              |insert "<-"
+|Ctrl + Shift + M     |insert "%>%"
+|Ctrl + Shift + C     |(un)comment lines
+
+
+
+
+<br>
+
+## RStudio IDEs
+
+```{r echo = FALSE, out.width = "75%"}
+knitr::include_graphics("image/bk02_data-science-tools/rstudio-editor2.png")
+```
+
+<br>
+
+## Reference
+
+- [RStudio IDE Cheat Sheet](https://www.rstudio.com/resources/cheatsheets/#ide)
+
+
