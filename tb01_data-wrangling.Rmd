@@ -1,0 +1,167 @@
+---
+title: "Data Wrangling with R"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+mainfont: NanumGothic
+---
+
+## tidyr & dplyr
+
+Two packages to help you work with the structure of data.
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/dplyr_cheatsheet.png")
+```
+https://www.rstudio.com/resources/cheatsheets/
+
+---
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/pipe.png")
+```
+
+
+--- 
+
+Data sets come in many formats
+…but R prefers just one.
+
+
+
+---
+## pipe
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/pipe.png")
+```
+
+---
+## tidy data
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/tidy_data.png")
+```
+
+### Examples:
+
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/examples.png")
+```
+
+---
+## tidyr
+
+A package that reshapes the layout of
+tables.
+
+Two main functions: gather() and spread()
+
+
+### test
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/test.png")
+```
+
+
+
+--- 
+
+## gather
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/gather.png")
+```
+---
+
+## gather
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/gather2.png")
+```
+
+
+---
+
+## test2
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/test2.png")
+```
+
+
+
+---
+
+## spread
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/spread.png")
+```
+---
+
+## spread
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/spread2.png")
+```
+
+---
+
+## gther & spread
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/gather-spread.png")
+```
+
+---
+
+## separate
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/separate.png")
+```
+
+
+
+---
+
+## unite
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/unite.png")
+```
+
+
+
+---
+
+## recap
+
+```{r}
+knitr::include_graphics("image/tb01_data-wrangling/recap1.png")
+```
+
+
+--
+
+## dplyr
+
+A package that helps transform tabular data.
+
+
+> Data sets contain more information than they display
+
+?select
+?filter
+?arrange
+?mutate
+?summarise
+?group_by
+
+

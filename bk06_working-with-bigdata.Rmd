@@ -1,0 +1,144 @@
+---
+title: "Working with Big Data in R"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+mainfont: NanumGothic
+---
+exclude: true
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  width=80
+)
+
+# library(emo)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+---
+
+## dplyr provides built-in SQL backend
+
+1. Connects to DBMS’s
+
+2. Transforms R code to SQL, sends to DBMS to run in DBMS
+
+3. Collect results into R
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/using_dplyr.png")
+
+```
+
+---
+
+## DB Connection
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/connect.png")
+
+```
+---
+
+## Dplyr driver functions
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/SQLite.png")
+
+```
+
+
+---
+
+## dplyr command to SQL
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/dplyr.png")
+
+```
+
+---
+## Lazy Execution 
+
+dplyr will only retrieve the first 10 rows of a query when you look at the output.
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/lazy.png")
+
+```
+
+---
+## Collect
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/collect.png")
+
+```
+
+---
+
+## collapse
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/collapse.png")
+
+```
+
+---
+
+## Fit model
+
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/fit.png")
+
+```
+
+---
+
+## copy to
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/copyto.png")
+
+```
+
+---
+## close
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/close.png")
+
+```
+---
+## alternative 
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/alternative.png")
+
+```
+
+---
+
+##  
+
+
+```{r echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("image/bk06_working-with-bigdata/bigdata_visualization.png")
+
+```

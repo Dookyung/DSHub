@@ -1,0 +1,127 @@
+---
+title: "Nested Data"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+mainfont: NanumGothic
+---
+
+```{r setup, include=FALSE}
+library(tidyverse) 
+```
+
+---
+
+## Nested Data
+
+* A nested data frame stores individual tables within the cells of a larger, organizing table.
+
+* Use a nested data frame to:
+
+    * preserve relationships between observations and subsets of data
+    * manipulate many sub-tables at once with the purrr functions map(), map2(), or pmap().
+    
+```{r echo=FALSE, out.width='70%'}
+knitr::include_graphics("myss/nestdata.png")
+```
+
+
+---
+
+### How to create a nested data frame:
+
+1. Group the data frame into groups with dplyr::group_by()
+
+2. Use nest() to create a nested data frame with one row per group
+
+```{r c3, out.width='70%'}
+knitr::include_graphics("myss/nesteddata2.png")
+```
+
+
+
+---
+### unnest()
+
+```{r c5, out.width='70%'}
+knitr::include_graphics("myss/unnest.png")
+```
+
+---
+
+## List Columns
+
+
+```{r c27}
+knitr::include_graphics("image/tb03_list-column/listcolumn.png")
+```
+
+---
+
+## List Column Workflow
+
+
+```{r c7, out.width='100%'}
+knitr::include_graphics("myss/listColumn2.png")
+```
+
+
+---
+## WORK WITH LIST COLUMNS
+
+
+```{r c17}
+knitr::include_graphics("myss/workwithcolumnlist01.png")
+```
+
+
+```{r c19}
+knitr::include_graphics("myss/workwithcolumnlist02.png")
+```
+
+  
+```{r c21}
+knitr::include_graphics("myss/workwithcolumnlist03.png")
+```
+
+---
+
+```{r c30}
+knitr::include_graphics("image/tb03_list-column/mapLogic.png")
+```
+
+---
+
+## Simplify the List column
+
+```{r c31}
+knitr::include_graphics("image/tb03_list-column/mapWalk.png")
+```
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

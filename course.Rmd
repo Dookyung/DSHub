@@ -23,11 +23,12 @@ title: "Lessons and Materials"
 
 - Base R ( [slide](./R01_Base-R-new.html) / [code](./Practice/code01.R) )  --- 수정필요
 
-- RStudio Cheat Sheet for Base-R ( [pdf](./cheat_sheet/base-r.pdf) / [html](./R02_Base-R.html) )
+- RStudio Cheat Sheet for Base-R ( [pdf](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf
+) / [html](./R02_Base-R.html) )
 
 - [R vocabulary](./bk03_r-vocabulary.html)  --- 수정 필요 
 
-- Using library ( [code](./R03_Das-intro.R) )
+- Using library ( [code](./Practice/R03_Das-intro.R) )
 
 <br>
 

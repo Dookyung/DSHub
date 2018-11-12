@@ -1,0 +1,49 @@
+---
+title: "EDA with ggplot"
+---
+
+
+# Explaratory Data Analysis with ggplot2
+
+```{r include = FALSE}
+library(tidyverse)
+```
+
+## Introduction
+
+This chapter will show you how to use visualisation and transformation to explore your data in a systematic way, a task that statisticians call exploratory data analysis, or EDA for short. EDA is an iterative cycle. You:
+
+1. Generate questions about your data.
+
+1. Search for answers by visualising, transforming, and modelling your data.
+
+1. Use what you learn to refine your questions and/or generate new questions.
+
+
+
+There is no rule about which questions you should ask to guide your research. However, two types of questions will always be useful for making discoveries within your data. You can loosely word these questions as:
+
+1. What type of variation occurs within my variables?
+
+1. What type of covariation occurs between my variables?
+
+The rest of this chapter will look at these two questions. I'll explain what variation and covariation are, and I'll show you several ways to answer each question. To make the discussion easier, let's define some terms: 
+
+*   A __variable__ is a quantity, quality, or property that you can measure. 
+
+*   A __value__ is the state of a variable when you measure it. The value of a
+    variable may change from measurement to measurement.
+  
+*   An __observation__ is a set of measurements made under similar conditions
+    (you usually make all of the measurements in an observation at the same 
+    time and on the same object). An observation will contain several values, 
+    each associated with a different variable. I'll sometimes refer to 
+    an observation as a data point.
+
+*   __Tabular data__ is a set of values, each associated with a variable and an
+    observation. Tabular data is _tidy_ if each value is placed in its own
+    "cell", each variable in its own column, and each observation in its own 
+    row. 
+
+
+
